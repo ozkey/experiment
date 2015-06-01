@@ -1,0 +1,18 @@
+{
+    "name": "ozkey",
+    "description": "example chat application with socket.io",
+    "version": "0.0.1",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Oscar Aguilera",
+    "license": "copyright",
+    "devDependencies": {
+        "PhysicsJS":"",
+        "gameServer":"",
+        "express": "",
+        "three":"",
+        "socket.io": ""
+    }
+}
