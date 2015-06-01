@@ -108,7 +108,7 @@ function gameClient () {
 
         scene = new THREE.Scene();
 
-        renderer = new THREE.CanvasRenderer();
+        renderer =  new THREE.WebGLRenderer();  //new THREE.CanvasRenderer();
         renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
 
         $("#gameBoard").append(renderer.domElement);

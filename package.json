@@ -9,7 +9,7 @@
     "author": "Oscar Aguilera",
     "license": "copyright",
     "devDependencies": {
-        "PhysicsJS":"",
+
         "gameServer":"",
         "express": "",
         "three":"",
