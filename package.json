@@ -1,18 +1,23 @@
 {
-    "name": "ozkey",
-    "description": "example chat application with socket.io",
-    "version": "0.0.1",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "Oscar Aguilera",
-    "license": "copyright",
-    "devDependencies": {
-
-        "gameServer":"",
-        "express": "",
-        "three":"",
-        "socket.io": ""
-    }
+  "name": "ozkey",
+  "description": "example chat application with socket.io",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oscar Aguilera",
+  "license": "copyright",
+  "devDependencies": {
+    "three": "",
+    "socket.io": "",
+    "del": "^1.1.1",
+    "express": "4.12.4",
+    "gulp": "^3.9.0",
+    "gulp-ruby-sass": "1.0.5",
+    "gulp-watch": "^4.1.1",
+    "mkdirp": "^0.5.0",
+    "watch": "^0.14.0",
+    "gulp-file-include": "^0.13.2"
+  }
 }

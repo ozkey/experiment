@@ -11,7 +11,21 @@ This README would normally document whatever steps are necessary to get your app
 ### How do I get set up? ###
 
 * Summary of set up
+(windows ) download and install ruby2.2.x: and then fix it (2.2.3) http://guides.rubygems.org/ssl-certificate-update/
+gem install sass
+download and install node
+npm install -g gulp
+npm install -g bower
+npm install -g browserify
+npm install
+cd public
+bower install
+cd..
+gulp build
+node index.js
+
 * Configuration
+
 * Dependencies
 * Database configuration
 * How to run tests

@@ -1,5 +1,8 @@
 module.exports = chat;
 
+var events = require('events'),
+    util = require('util');
+
 function chat () {
     'use strict';
 
