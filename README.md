@@ -16,6 +16,8 @@ Code Experiment (possibly a game but only God know what this will become)
 * Summary of set up
 * (windows ) download and install ruby2.2.x: and then fix it (2.2.3) http://guides.rubygems.org/ssl-certificate-update/
 * gem install sass
+* download and install mongodb
+* start mongodb
 * download and install node
 * npm install -g gulp
 * npm install -g bower
@@ -26,6 +28,7 @@ Code Experiment (possibly a game but only God know what this will become)
 * cd..
 * gulp build
 * node index.js
+* http://localhost:8080/
 
 
 ### Who do I talk to? ###
