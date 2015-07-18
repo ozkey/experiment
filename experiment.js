@@ -23,7 +23,14 @@ chat.chatEventManager();
 
 
 
+io.sockets.on('connection', function (socket) {
+    console.log("connection:");
+    // when the client emits 'adduser', this listens and executes
+    socket.on('adduser', function (username) {
+        console.log("db load :");
+    });
 
+});
 
 // Retrieve
 var MongoClient = require('mongodb').MongoClient;

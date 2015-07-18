@@ -27,10 +27,18 @@ Code Experiment (possibly a game but only God know what this will become)
 * bower install
 * cd..
 * gulp build
-* node index.js
-* http://localhost:8080/
 
+### to run server ###
+
+* start mongo db: 
+  C:\mongodb\bin\mongod.exe
+* start serer:
+  node index.js
+* open browser to:  
+  http://localhost:8080/
 
 ### Who do I talk to? ###
 
 * https://github.com/ozkey/experiment/issues
+
+
