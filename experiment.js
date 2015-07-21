@@ -47,7 +47,9 @@ MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
         collection.find().toArray(function(err, items) {});
 
         var stream = collection.find({mykey:{$ne:2}}).stream();
-        stream.on("data", function(item) {});
+        stream.on("data", function(item) {
+            console.log("ddd:" + item["mykey"] )
+        });
         stream.on("end", function() {});
 
         collection.findOne({mykey:1}, function(err, item) {

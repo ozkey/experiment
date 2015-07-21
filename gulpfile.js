@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     sass = require('gulp-ruby-sass'),
     del = require('del'),
+    browserify = require('gulp-browserify'),
     node;
 
 
@@ -13,6 +14,9 @@ gulp.task('cleanPolymer', function(cb) {
     del(['public/assets/polymer-elements/**/*'], cb);
 });
 
+gulp.task('cleanScripts', function(cb) {
+    del(['public/js/**/*'], cb);
+});
 
 
 
@@ -29,22 +33,31 @@ gulp.task('polymer',['polymerStyles'], function() {
 });
 
 
-gulp.task('watch_task', ['polymer'], function() {
-  gulp.watch('elements-src/**/*', ['polymer']);
+gulp.task('watch_task', ['build'], function() {
+    gulp.watch('elements-src/**/*', ['polymer']);
+    gulp.watch('js/**/*', ['scripts']);
 });
 
 
 // Basic usage
 gulp.task('scripts', function() {
     // Single entry point to browserify
-    gulp.src('src/js/app.js')
+    gulp.src('js/app.js')
         .pipe(browserify({
             insertGlobals : true,
             debug : !gulp.env.production
         }))
-        .pipe(gulp.dest('./build/js'))
+        .pipe(gulp.dest('public/js/build'))
 });
 
-gulp.task('build', ['polymer', 'cleanPolymer' ]);
+// clean up if an error goes unhandled.
+process.on('exit', function() {
+
+    console.log('\u0007');console.log('\u0007');console.log('\u0007');console.log('\u0007');
+    console.log('fix error and run again');
+
+});
+
+gulp.task('build', ['polymer','scripts', 'cleanPolymer' ]);
 gulp.task('default', ['build' , 'watch_task']);
 
