@@ -14,9 +14,9 @@ Code Experiment (possibly a game but only God know what this will become)
 ### How do I get set up? ###
 
 * Summary of set up
-* (windows ) download and install ruby2.2.x: and then fix it (2.2.3) http://guides.rubygems.org/ssl-certificate-update/
+* (windows ) download and install ruby2.2.x: and then fix it (2.2.3) "gem install --local C:\rubygems-update-2.2.3.gem" guide here http://guides.rubygems.org/ssl-certificate-update/  download here https://github.com/rubygems/rubygems/releases/tag/v2.2.3
 * gem install sass
-* download and install mongodb
+* download and install mongodb in C:\mongodb\ and make data folder "md \data\db"
 * start mongodb
 * download and install node
 * npm install -g gulp
