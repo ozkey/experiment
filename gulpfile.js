@@ -42,7 +42,7 @@ gulp.task('watch_task', ['build'], function() {
 // Basic usage
 gulp.task('scripts', function() {
     // Single entry point to browserify
-    gulp.src('js/app.js')
+    gulp.src(['js/app.js','js/game.js'])
         .pipe(browserify({
             insertGlobals : true,
             debug : !gulp.env.production

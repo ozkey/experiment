@@ -5,11 +5,8 @@ module.exports = chat;
 
 
 
-
-
 function chat () {
     'use strict';
-
     var socket;
     var username = "";
 

@@ -1,12 +1,5 @@
-//
-
 /*
-
-
-nodemon index.js
-
  http://localhost:8080/
-
 */
 
 
@@ -19,8 +12,6 @@ var chat = require(__dirname + '/lib/chat.js');
 var chat = new chat(io);
 //start the event manager
 chat.chatEventManager();
-
-
 
 
 io.sockets.on('connection', function (socket) {
