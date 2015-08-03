@@ -1,13 +1,21 @@
 var THREE = require('three');
+var xyzObject = require('../js/xyzObject.js');
+
+
 
 $(function () {
     var game  = new gameClient();
     game.init();
     game.connect(io);
 
+    var x = new xyzObject(THREE);
+    console.log(JSON.stringify(x));
+
 });
 
 function gameClient () {
+
+
     'use strict';
 
     var camera, scene, renderer;
@@ -18,6 +26,7 @@ function gameClient () {
     var username = "";
 
     this.init = function (controls) {
+
 
 
         //gameBoardClient.newAvatar("as");
@@ -90,6 +99,8 @@ function gameClient () {
         //    console.log("avatar" + i);
         //    avatars[i].motion();
         //}
+
+        //console.log(JSON.stringify({'x':'1'}));
         renderer.render(scene, camera);
     }
 
