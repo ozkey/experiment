@@ -50,7 +50,7 @@ function init() {
     // cubes
 
     cubeGeo = new THREE.BoxGeometry( 50, 50, 50 );
-    cubeMaterial = new THREE.MeshLambertMaterial( { color: 0xfeb74c, shading: THREE.FlatShading, map: THREE.ImageUtils.loadTexture( "textures/square-outline-textured.png" ) } );
+    cubeMaterial =new THREE.MeshBasicMaterial( { color: 0x00ff00, opacity: 0.5, transparent: false } );// new THREE.MeshLambertMaterial( { color: 0xfeb74c, shading: THREE.FlatShading, map: THREE.ImageUtils.loadTexture( "textures/square-outline-textured.png" ) } );
 
     // grid
 
@@ -176,8 +176,15 @@ function onDocumentMouseDown( event ) {
         } else {
 
             var voxel = new THREE.Mesh( cubeGeo, cubeMaterial );
-            voxel.position.copy( intersect.point ).add( intersect.face.normal );
+            console.log("--");
+            console.log(voxel.position);
+            voxel.position.copy( intersect.point );
+            console.log(voxel.position);
+            voxel.position.add( intersect.face.normal );
+            console.log(voxel.position);
             voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
+            console.log(voxel.position);
+            console.log("--");
             scene.add( voxel );
 
             objects.push( voxel );
