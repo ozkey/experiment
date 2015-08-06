@@ -50,7 +50,36 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('public/js/build'))
 });
 
+
+
+/* ==================================================== */
+/* testing */
+/* ==================================================== */
+
+var karma = require('gulp-karma');
+
+var testFiles = [
+    'js/test/*.js'
+];
+
+gulp.task('test', function() {
+    gulp.src(testFiles)
+        .pipe(karma({
+            configFile: 'karma.conf.js',
+            action: 'watch'
+        }));
+});
+
+
+
+
+
+/* ==================================================== */
 // clean up if an error goes unhandled.
+/* ==================================================== */
+
+
+
 process.on('exit', function() {
 
     console.log('\u0007');console.log('\u0007');console.log('\u0007');console.log('\u0007');
@@ -59,6 +88,10 @@ process.on('exit', function() {
 });
 
 
+
+/* ==================================================== */
+/* Data base */
+/* ==================================================== */
 
 
 
@@ -73,6 +106,15 @@ function runCommand(command) {
         });
     }
 }
+
+
+
+
+
+/* ==================================================== */
+/* Data base */
+/* ==================================================== */
+
 
 //Running mongo
 //http://stackoverflow.com/a/28048696/46810
