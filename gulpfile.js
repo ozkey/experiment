@@ -56,27 +56,32 @@ gulp.task('scripts', function() {
 /* testing */
 /* ==================================================== */
 
+//
+//var karma = require('karma').server;
+//
+//gulp.task('testC', function () {
+//
+//    karma.start({
+//        configFile:__dirname +  '/karma.conf.js',
+//        singleRun: true
+//    }, function (exitCode) {
+//        gutil.log('Karma has exited with ' + exitCode);
+//        process.exit(exitCode);
+//    });
+//
+//});
 
-var karma = require('karma').server;
+var karma = require('gulp-karma');
 
-gulp.task('test', function () {
-
-    karma.start({
-        configFile: '/karma.conf.js',
-        singleRun: true
-    }, function (exitCode) {
-        gutil.log('Karma has exited with ' + exitCode);
-        process.exit(exitCode);
-    });
-
-});
-
-
-
-gulp.task('test', function(done) {
-    karma.start({
-
-    }, done);
+var testFiles = [
+    'js/test/*.js'
+];
+gulp.task('test', function() {
+    gulp.src(testFiles)
+        .pipe(karma({
+            configFile: 'karma.conf.js',
+            action: 'watch'
+        }));
 });
 
 /* ==================================================== */
