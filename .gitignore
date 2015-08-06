@@ -9,3 +9,4 @@ public/assets/polymer-elements/
 public/assets/css/polymer-elements/
 public/js/build/
 jsGenTests/
+coverage/

@@ -20,14 +20,12 @@
     "watch": "^0.14.0",
     "gulp-file-include": "^0.13.2",
     "gulp-browserify": "^0.5.1",
-
-    "karma": "",
+    "karma": "^0.13.7",
     "karma-jasmine": "",
     "karma-chrome-launcher": "",
-    "karma-coverage": "",
-    "karma-junit-reporter": ""
-
-
+    "karma-coverage": "^0.4.2",
+    "karma-junit-reporter": "",
+    "serve-index": "^1.7.2"
   },
   "dependencies": {
     "mongojs": "^1.0.2",
