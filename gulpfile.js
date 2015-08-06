@@ -75,31 +75,15 @@ gulp.task('scriptsTest',['scripts'], function() {
 /* ==================================================== */
 
 //
-//var karma = require('karma').server;
-//
-//gulp.task('testC', function () {
-//
-//    karma.start({
-//        configFile:__dirname +  '/karma.conf.js',
-//        singleRun: true
-//    }, function (exitCode) {
-//        gutil.log('Karma has exited with ' + exitCode);
-//        process.exit(exitCode);
-//    });
-//
-//});
+var karma = require('karma').server;
+gulp.task('test', function () {
+    karma.start({
+        configFile:__dirname +  '/karma.conf.js',
+        singleRun: false
+    }, function (exitCode) {
+        process.exit(exitCode);
+    });
 
-var karma = require('gulp-karma');
-
-var testFiles = [
-    'jsGenTests/*.js'
-];
-gulp.task('test',['scriptsTest'], function() {
-    gulp.src(testFiles)
-        .pipe(karma({
-            configFile: 'karma.conf.js',
-            action: 'watch'
-        }));
 });
 
 /* ==================================================== */
