@@ -56,23 +56,28 @@ gulp.task('scripts', function() {
 /* testing */
 /* ==================================================== */
 
-var karma = require('gulp-karma');
 
-var testFiles = [
-    'js/test/*.js'
-];
+var karma = require('karma').server;
 
-gulp.task('test', function() {
-    gulp.src(testFiles)
-        .pipe(karma({
-            configFile: 'karma.conf.js',
-            action: 'watch'
-        }));
+gulp.task('test', function () {
+
+    karma.start({
+        configFile: '/karma.conf.js',
+        singleRun: true
+    }, function (exitCode) {
+        gutil.log('Karma has exited with ' + exitCode);
+        process.exit(exitCode);
+    });
+
 });
 
 
 
+gulp.task('test', function(done) {
+    karma.start({
 
+    }, done);
+});
 
 /* ==================================================== */
 // clean up if an error goes unhandled.

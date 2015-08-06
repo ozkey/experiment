@@ -22,6 +22,7 @@ Code Experiment (possibly a game but only God know what this will become)
 * npm install -g bower
 * npm install -g browserify
 * npm install -g karma
+* npm install -g jasmine
 * npm install
 * cd public
 * bower install
