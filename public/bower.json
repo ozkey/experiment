@@ -10,7 +10,6 @@
     "ozkey",
     "polymer"
   ],
-
   "registry": "http://bower.herokuapp.com",
   "strict-ssl": false,
   "license": "copyright",
@@ -23,8 +22,7 @@
     "tests"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#1.0.2"
+    "polymer": "Polymer/polymer#1.0.2",
+    "jquery": "~2.1.4"
   }
 }
-
-
