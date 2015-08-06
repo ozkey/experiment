@@ -16,6 +16,7 @@ gulp.task('cleanPolymer', function(cb) {
 
 gulp.task('cleanScripts', function(cb) {
     del(['public/js/**/*'], cb);
+    del(['jsGenTests/**/*'], cb);
 });
 
 
@@ -35,14 +36,19 @@ gulp.task('polymer',['polymerStyles'], function() {
 
 gulp.task('watch_task', ['build'], function() {
     gulp.watch('elements-src/**/*', ['polymer']);
-    gulp.watch('js/**/*', ['scripts']);
+    gulp.watch('js/**/*', ['scripts','scriptsTest']);
+
 });
 
 
 // Basic usage
 gulp.task('scripts', function() {
     // Single entry point to browserify
-    gulp.src(['js/app.js','js/builder.js','js/gameClient.js'])
+    gulp.src([
+        'js/app.js',
+        'js/builder.js',
+        'js/gameClient.js'
+    ])
         .pipe(browserify({
             insertGlobals : true,
             debug : !gulp.env.production
@@ -51,6 +57,18 @@ gulp.task('scripts', function() {
 });
 
 
+// Basic usage
+gulp.task('scriptsTest',['scripts'], function() {
+    // Single entry point to browserify
+    gulp.src([
+        'js/test/**/*.js'
+    ])
+        .pipe(browserify({
+            insertGlobals : true,
+            debug : !gulp.env.production
+        }))
+        .pipe(gulp.dest('jsGenTests/'))
+});
 
 /* ==================================================== */
 /* testing */
@@ -74,9 +92,9 @@ gulp.task('scripts', function() {
 var karma = require('gulp-karma');
 
 var testFiles = [
-    'js/test/*.js'
+    'jsGenTests/*.js'
 ];
-gulp.task('test', function() {
+gulp.task('test',['scriptsTest'], function() {
     gulp.src(testFiles)
         .pipe(karma({
             configFile: 'karma.conf.js',
@@ -136,5 +154,5 @@ gulp.task('start-app', runCommand('node app.js'))
 
 
 gulp.task('build', ['polymer','scripts', 'cleanPolymer' ]);
-gulp.task('default', ['build' , 'watch_task']);
+gulp.task('default', ['build', 'test' , 'watch_task']);
 
