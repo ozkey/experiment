@@ -15,8 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+        {pattern: 'jsGenTests/x*.js', included: true}
       //'test-main.js',
-      //{pattern: '/js/test/*.js', included: false},
+        //{pattern: '/js/test/*.js', included: false},
       //{pattern: 'js/test/*.js', included: false}
     ],
 
@@ -62,9 +63,6 @@ module.exports = function(config) {
       plugins : [
           'karma-junit-reporter',
           'karma-chrome-launcher',
-          'karma-firefox-launcher',
-          'karma-opera-launcher',
-          'karma-ie-launcher',
           'karma-jasmine'
       ],
 
