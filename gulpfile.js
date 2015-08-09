@@ -76,7 +76,7 @@ gulp.task('scriptsTest',['scripts'], function() {
 
 //
 var karma = require('karma').server;
-gulp.task('test', function () {
+gulp.task('test',['scriptsTest'], function () {
     karma.start({
         configFile:__dirname +  '/karma.conf.js',
         singleRun: false
