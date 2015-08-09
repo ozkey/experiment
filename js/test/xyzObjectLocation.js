@@ -1,4 +1,4 @@
-var xyzObjectLocation = require('../../js/xyzObjectLocation.js');
+var xyzObjectLocation = require('../src/xyzObjectLocation.js');
 var THREE = require('three');
 
 describe("A suite s", function() {

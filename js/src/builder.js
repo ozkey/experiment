@@ -1,5 +1,5 @@
 var THREE = require('three');
-var Detector = require('../js/Detector.js');
+var Detector = require('Detector.js');
 
 
 

@@ -2,6 +2,7 @@
 // Generated on Thu Aug 06 2015 12:41:15 GMT+1000 (AUS Eastern Standard Time)
 
 var istanbul = require("browserify-istanbul");
+var NODE_ENV = "testing";
 
 module.exports = function(config) {
     config.set({
@@ -31,7 +32,9 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'js/**/*.js': [ 'coverage' ,'browserify']
+            'js/test/*.js': ['browserify'],
+            'js/src/*.js':  ['coverage']
+
         },
         browserify: {
             debug: true,
@@ -61,6 +64,7 @@ module.exports = function(config) {
         coverageReporter: {
             reporters : [
                 {"type": "text"},
+                {type: 'html', subdir: 'coverage'},
 
             ]
         },

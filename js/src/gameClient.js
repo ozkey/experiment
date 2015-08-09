@@ -1,5 +1,5 @@
 var THREE = require('three');
-var xyzObject = require('../js/xyzObject.js');
+var xyzObject = require('xyzObject.js');
 
 
 

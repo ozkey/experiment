@@ -1,6 +1,6 @@
 module.exports = xyzObject;
-var xyzObjectGeometry = require('../js/xyzObjectGeometry.js');
-var xyzObjectLocation = require('../js/xyzObjectLocation.js');
+var xyzObjectGeometry = require('xyzObjectGeometry.js');
+var xyzObjectLocation = require('xyzObjectLocation.js');
 
 function xyzObject (THREE) {
     'use strict';

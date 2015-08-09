@@ -1,4 +1,4 @@
-var chat = require('../js/chat.js');
+var chat = require('chat.js');
 
 
 
