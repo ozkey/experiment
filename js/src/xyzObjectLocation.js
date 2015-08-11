@@ -3,37 +3,45 @@ module.exports = xyzObjectLocation;
 function xyzObjectLocation (THREE) {
     'use strict';
 
-    this.direction = new THREE.Vector3(0, 0, 0);
+    this.rotation = new THREE.Vector3(0, 0, 0);
     this.position = new THREE.Vector3(0, 0, 0);
+    this.velocity = new THREE.Vector3(0, 0, 0);
 
-    this.setDirection = function (x,y,z) {
-        this.direction.set(x, y , z);
+    this.setRotation = function (x,y,z) {
+        this.rotation.set(x, y , z);
+    };
+
+    this.setVelocity = function (x,y,z) {
+        this.velocity.set(x, y , z);
+    };
+
+    this.getSpeed = function(){
+        var speed = Math.sqrt((this.velocity.x * this.velocity.x) + (this.velocity.y * this.velocity.y) + (this.velocity.z * this.velocity.z));
+        return speed;
     };
 
 
-    //this.move= function () {
-    //    'use strict';
-    //    // We update our Object3D's position from our "direction"
-    //    position.x += this.direction.x * ((this.direction.z === 0) ? 4 : Math.sqrt(8));
-    //    position.z += this.direction.z * ((this.direction.x === 0) ? 4 : Math.sqrt(8));
-    //
-    //}
 
+    this.move= function () {
+        position.x += this.velocity.x;
+        position.y += this.velocity.y;
+        position.z += this.velocity.z;
+    };
 
     this.getPosition = function(){
         return {"x":this.position.x, "y":this.position.y,"z":this.position.z}
     };
-    this.getDirection= function(){
-        return {"x":this.direction.x, "y":this.direction.y,"z":this.direction.z}
+    this.getRotation= function(){
+        return {"x":this.rotation.x, "y":this.rotation.y,"z":this.rotation.z}
     };
 
     this.setPosition = function(x,y,z){
-        position.x = x;
-        position.y = y;
-        position.z = z;
+        this.position.x = x;
+        this.position.y = y;
+        this.position.z = z;
     };
     this.getCommsData = function(){
-        return { "position":this.getPosition(),"direction":this.getDirection()}
+        return { "position":this.getPosition(),"rotation":this.getRotation()}
     }
 
 }
