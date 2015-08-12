@@ -15,6 +15,13 @@ function xyzObjectLocation (THREE) {
         this.velocity.set(x, y , z);
     };
 
+    this.accelerate = function(force , quaternion ){
+        var zVec = new THREE.Vector3( force , 0, 0 );
+        zVec.applyQuaternion( quaternion );
+        return zVec;
+    }
+
+
     this.getSpeed = function(){
         var speed = Math.sqrt((this.velocity.x * this.velocity.x) + (this.velocity.y * this.velocity.y) + (this.velocity.z * this.velocity.z));
         return speed;
