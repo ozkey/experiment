@@ -47,21 +47,19 @@ describe("A suite velocity", function() {
 
     it("Accelarate and speed has a new value", function() {
         //expect(mesh.quaternion).toBe(1.00);
-        var v = location.accelerate(1,mesh.quaternion );
-        v.normalize();
+        location.setVelocity(0,0,0)
+        var v = location.accelerate(1,1,1,mesh.quaternion );
         expect(v.x).toBe(1);
-        expect(v.y).toBe(0);
-        expect(v.z).toBe(0);
-        //expect(Math.round(location.getSpeed()* 100) / 100).toBe(1.00);
+        expect(v.y).toBe(1);
+        expect(v.z).toBe(1);
 
         mesh.rotateZ( Math.PI  ); //180 degrees
-        //mesh.rotateZ( - Math.PI  ); //180 degrees
 
-        v = location.accelerate(22,mesh.quaternion );
+        v = location.accelerate(22,0,0,mesh.quaternion );
 
-        expect(v.x).toBe(-22);
-        expect(Math.round(v.y* 100000) / 100000).toBe(0);
-        expect(v.z).toBe(0);
+        expect(v.x).toBe(-21);
+        expect(Math.round(v.y* 100000) / 100000).toBe(1);
+        expect(v.z).toBe(1);
 
 
     });

@@ -15,10 +15,12 @@ function xyzObjectLocation (THREE) {
         this.velocity.set(x, y , z);
     };
 
-    this.accelerate = function(force , quaternion ){
-        var zVec = new THREE.Vector3( force , 0, 0 );
-        zVec.applyQuaternion( quaternion );
-        return zVec;
+    this.accelerate = function(forceX,forceY,forceZ , quaternion ){
+        var forceInRelationToObject = new THREE.Vector3( forceX,forceY,forceZ );
+        var forceInRelationToWorld = forceInRelationToObject.applyQuaternion( quaternion );
+        this.velocity.add(forceInRelationToWorld);
+        return this.velocity;
+
     }
 
 
