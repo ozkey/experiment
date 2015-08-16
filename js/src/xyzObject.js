@@ -7,11 +7,12 @@ var xyzObjectLocation = require('../src/xyzObjectLocation.js');
 
 
 
-function xyzObject (THREE) {
+function xyzObject (THREE,scene) {
     'use strict';
     this.geometry = new xyzObjectGeometry(THREE);
     this.location = new xyzObjectLocation(THREE);
 
+    scene.add(this.geometry.getMesh());
 
 
 }

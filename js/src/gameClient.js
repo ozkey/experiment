@@ -1,16 +1,12 @@
 var THREE = require('three');
-var xyzObject = require('xyzObject.js');
+
+var xyzObject = require('../src/xyzObject.js');
 
 
 
 $(function () {
     var game  = new gameClient();
-    game.init();
     game.connect(io);
-
-    var x = new xyzObject(THREE);
-    console.log(JSON.stringify(x));
-
 });
 
 function gameClient () {
@@ -25,12 +21,7 @@ function gameClient () {
     var gameBoardClient;
     var username = "";
 
-    this.init = function (controls) {
 
-
-
-        //gameBoardClient.newAvatar("as");
-    };
 
     this.connect = function(io){
         /**
@@ -44,6 +35,7 @@ function gameClient () {
             //username = "u"+id;
             //socket.emit('adduser', username);
             init3D();
+            loadXYZobjects();
             animate();
         });
 
@@ -79,6 +71,7 @@ function gameClient () {
     };
 
     function init3D() {
+        console.log("init3d");
 
         camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
         camera.position.z = 100;
@@ -88,7 +81,18 @@ function gameClient () {
 
         $("#gameBoard").append(renderer.domElement);
 
+
+
+        //renderer.setPixelRatio( window.devicePixelRatio );
+        //renderer.setSize( window.innerWidth, window.innerHeight );
+
+
+
     }
+
+    function loadXYZobjects() {
+        var x = new xyzObject(THREE,scene);
+    };
 
     function animate() {
 
