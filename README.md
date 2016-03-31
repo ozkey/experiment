@@ -32,7 +32,7 @@ Code Experiment (possibly a game but only God know what this will become)
 ### to run server ###
 
 * start mongo db: 
-  C:\mongodb\bin\mongod.exe
+  C:/MongoDB/Server/3.2/bin/mongod --dbpath C:/MongoDBdata/
 * start serer:
   node index.js
 * open browser to:  
