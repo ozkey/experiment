@@ -34,7 +34,7 @@ Code Experiment (possibly a game but only God know what this will become)
 * start mongo db:
   C:/MongoDB/Server/3.2/bin/mongod --dbpath C:/MongoDBdata/
 * start serer:
-  node experiment.js
+  node startServer.js
 * open browser to:  
   http://localhost:8080/html/experiment.html
 
