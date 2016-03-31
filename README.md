@@ -31,10 +31,10 @@ Code Experiment (possibly a game but only God know what this will become)
 
 ### to run server ###
 
-* start mongo db: 
+* start mongo db:
   C:/MongoDB/Server/3.2/bin/mongod --dbpath C:/MongoDBdata/
 * start serer:
-  node index.js
+  node experiment.js
 * open browser to:  
   http://localhost:8080/
 

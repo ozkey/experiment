@@ -1,4 +1,4 @@
-var chat = require('chat.js');
+var chat = require('../src/chat.js');
 
 $(function () {
     var chata  = new chat();
