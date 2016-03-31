@@ -128,11 +128,12 @@ function runCommand(command) {
 /* ==================================================== */
 
 
-//Running mongo
+//Running mongo examples
 //http://stackoverflow.com/a/28048696/46810
-gulp.task('start-mongo', runCommand('mongod --dbpath ./data/'));
+gulp.task('start-mongo', runCommand('C:/MongoDB/Server/3.2/bin/mongod --dbpath C:/MongoDBdata/'));
+// gulp.task('start-mongo', runCommand('mongod --dbpath ./data/'));
 gulp.task('stop-mongo', runCommand('mongo --eval "use admin; db.shutdownServer();"'));
-gulp.task('start-app', runCommand('node app.js'))
+gulp.task('start-app', runCommand('node app.js'));
 
 
 
