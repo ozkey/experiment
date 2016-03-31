@@ -46,8 +46,8 @@ gulp.task('scripts', function() {
     // Single entry point to browserify
     gulp.src([
             'js/src/app.js',
-            'js/src/builder.js',
-            'js/src/gameClient.js'
+            // 'js/src/builder.js',
+            // 'js/src/gameClient.js'
     ])
         .pipe(browserify({
             insertGlobals : true,

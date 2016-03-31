@@ -36,7 +36,7 @@ Code Experiment (possibly a game but only God know what this will become)
 * start serer:
   node experiment.js
 * open browser to:  
-  http://localhost:8080/
+  http://localhost:8080/html/experiment.html
 
 ### Who do I talk to? ###
 
