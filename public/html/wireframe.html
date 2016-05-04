@@ -27,6 +27,11 @@
 <script>
 
     var camera, scene, renderer;
+
+    var raycaster = new THREE.Raycaster();
+    var mouse = new THREE.Vector2();
+    var INTERSECTED;
+
     var mesh, object , stats;
     var controls;
     var clock = new THREE.Clock();
@@ -80,6 +85,9 @@
 
         hemiLight = new THREE.HemisphereLight(0xddeeff, 0x0f0e0d, 0.45);
         scene.add(hemiLight);
+
+
+//        scene.fog = new THREE.Fog( 0x050505, 10, 10 );
     }
 
 
@@ -185,6 +193,17 @@
         controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.target.set(0, 0, 0);
         controls.update();
+
+
+
+        document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+
+    }
+
+    function onDocumentMouseMove( event ) {
+        event.preventDefault();
+        mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+        mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
     }
 
     function init() {
@@ -241,6 +260,31 @@
 
 
     function render() {
+
+
+        camera.lookAt( scene.position );
+        camera.updateMatrixWorld();
+
+
+        // find intersections
+        raycaster.setFromCamera( mouse, camera );
+        var intersects = raycaster.intersectObjects( scene.children );
+        if ( intersects.length > 0 ) {
+            if ( INTERSECTED != intersects[ 0 ].object ) {
+
+                INTERSECTED = intersects[ 0 ].object;
+
+                INTERSECTED.rotation.x += 0.1;
+
+            }
+        } else {
+
+        }
+
+
+
+
+
 
 
 
