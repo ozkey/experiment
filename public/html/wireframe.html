@@ -21,11 +21,16 @@
 <script src="http://localhost:8080/threejs/examples/js/controls/OrbitControls.js"></script>
 <script src="http://localhost:8080/js/vendor/Detector.js"></script>
 
+<div id="container"></div>
+
+
 <script>
 
     var camera, scene, renderer;
-    var mesh, object;
-
+    var mesh, object , stats;
+    var controls;
+    var clock = new THREE.Clock();
+    var container = document.getElementById( 'container' );
     init();
     animate();
 
@@ -52,12 +57,6 @@
         renderer.gammaOutput = true;
         renderer.shadowMap.enabled = true;
         renderer.toneMapping = THREE.ReinhardToneMapping;
-
-
-//        container.appendChild( renderer.domElement );
-        var controls = new THREE.OrbitControls( camera, renderer.domElement );
-        controls.target.set( 0, 0, 0 );
-        controls.update();
 
 
         document.body.appendChild(renderer.domElement);
@@ -113,15 +112,26 @@
         ballMesh.castShadow = true;
         scene.add(ballMesh);
     }
+    function statsBox() {
+        stats = new Stats();
+        container.appendChild(stats.dom);
+    }
+    function controls() {
+//        container.appendChild( renderer.domElement );
+        controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.target.set(0, 0, 0);
+        controls.update();
+    }
+
     function init() {
-
-
 
         setCamera();
         setup();
         lights();
+        statsBox();
+        controls();
 
-
+        //==================
 
         var materials = new THREE.MeshBasicMaterial( { color: 0xff00ff, wireframe: true, transparent: true, opacity: 1, side: THREE.DoubleSide } ) ;
 
@@ -159,15 +169,23 @@
         requestAnimationFrame( animate );
 
         mesh.rotation.x += 0.001;
-
         object.rotation.x += 0.001;
 
+        render();
+    }
 
-//        console.log(mesh.rotation.x)
-        //mesh.rotation.y += 0.01;
+
+    function render() {
+
+
+
+        var time = Date.now() * 0.0005;
+        var delta = clock.getDelta();
+        bulbLight.position.y = Math.cos( time ) * 0.75 + 1.25;
+        bulbLight.position.x = Math.sin( time ) * 0.75 + 1.25;
 
         renderer.render( scene, camera );
-
+        stats.update();
     }
 
 </script>
