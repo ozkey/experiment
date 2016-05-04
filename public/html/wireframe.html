@@ -76,7 +76,7 @@
         bulbLight = new THREE.PointLight(0xffee88, 1, 100, 2);
         bulbMat = new THREE.MeshStandardMaterial({
             emissive: 0xffffee,
-            emissiveIntensity: 1,
+            emissiveIntensity: 50,
             color: 0x000000
         });
         bulbLight.add(new THREE.Mesh(bulbGeometry, bulbMat));
@@ -84,7 +84,7 @@
         bulbLight.castShadow = true;
         scene.add(bulbLight);
 
-        hemiLight = new THREE.HemisphereLight(0xddeeff, 0x0f0e0d, 0.45);
+        hemiLight = new THREE.HemisphereLight(0xddeeff, 0x0f0e0d, 0.045);
         scene.add(hemiLight);
 
 
@@ -137,6 +137,34 @@
         var mapLengthHalf =map.length/2;
 
 
+        var ballMat = new THREE.MeshStandardMaterial({
+            roughness: 0,
+            metalness: 0.0,
+            color: 0xffffff
+        });
+
+        var textureLoader = new THREE.TextureLoader();
+        textureLoader.load("/img/earth_atmos_2048.jpg", function (map) {
+            map.wrapS = THREE.RepeatWrapping;
+            map.wrapT = THREE.RepeatWrapping;
+            map.anisotropy = 4;
+            map.repeat.set(1, 1);
+            ballMat.map = map;
+            ballMat.needsUpdate = true;
+        });
+        textureLoader.load("/img/earth_specular_2048.jpg", function (map) {
+            map.wrapS = THREE.RepeatWrapping;
+            map.wrapT = THREE.RepeatWrapping;
+            map.anisotropy = 4;
+            map.repeat.set(1, 1);
+            ballMat.roughnessMap = map;
+            ballMat.needsUpdate = true;
+        });
+
+        var ballGeometry = new THREE.SphereGeometry(0.1213, 32, 32);
+
+
+
         for (x = 0; x < map.length; x++) {
             for (z = 0; z < map[x].length; z++) {
 
@@ -147,6 +175,13 @@
                 floorMesh.position.set(x, 0, z);
 //                floorMesh.position.set(x - mapLengthHalf, 0, z - mapLengthHalf);
 
+                var ballMesh = new THREE.Mesh(ballGeometry, ballMat);
+                ballMesh.position.set(0, 0, 0.15);
+                ballMesh.castShadow = true;
+
+
+                floorMesh.add(ballMesh);
+//                parent.add( object );
                 group.add( floorMesh );
             }
         }
@@ -291,7 +326,7 @@
 
                 INTERSECTED = intersects[ 0 ].object;
 
-                INTERSECTED.rotation.x += 0.1;
+                INTERSECTED.rotation.x += 0.5;
 
             }
         } else {
