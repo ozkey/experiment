@@ -99,7 +99,8 @@
             roughness: 0.8,
             color: 0xffffff,
             metalness: 0.2,
-            bumpScale: 0.0005,
+            bumpScale: 0.01,
+            side: THREE.DoubleSide
         });
         var textureLoader = new THREE.TextureLoader();
         textureLoader.load( "/img/hardwood2_diffuse.jpg", function( map ) {
@@ -128,8 +129,12 @@
         } );
 
 
-        var floorGeometry = new THREE.PlaneBufferGeometry( 1, 1 );
-        var floorMesh = new THREE.Mesh( floorGeometry, floorMat );
+
+//        var floorGeometry = new THREE.PlaneBufferGeometry( 1, 1 );
+//        var floorMesh = new THREE.Mesh( floorGeometry, floorMat );
+
+        var floorMesh = new THREE.Mesh( new THREE.PlaneGeometry( 1, 1, 1, 1 ), floorMat );
+
         floorMesh.receiveShadow = true;
         floorMesh.rotation.x = -Math.PI / 2.0;
         scene.add( floorMesh );
