@@ -5,12 +5,8 @@
     <meta charset="utf-8" />
     <title>MERN</title>
 
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <!--<script src="/threejs/three.min.js"></script>-->
-
 
     <!-- hack to share code with server -->
     <script src="/js/module.js"></script>
@@ -29,20 +25,77 @@
 <div id="content"></div>
 <!--<script type="text/babel" src="scripts/example.js"></script>-->
 <script type="text/babel">
-    // tutorial1.js
+
+    var data = [
+        {id: 1, author: "Pete Hunt", text: "This is one comment"},
+        {id: 2, author: "Jordan Walkeee", text: "This is *another* comment ..."}
+    ];
+
+    // tutorial9.js
     var CommentBox = React.createClass({
         render: function() {
             return (
                     <div className="commentBox">
-                        Hello, world! I am a CommentBox.
+                        <h1>Comments</h1>
+                        <CommentList data={this.props.data} />
+                        <CommentForm />
                     </div>
             );
         }
     });
+
+    // tutorial2.js
+    var CommentList = React.createClass({
+        render: function() {
+            var commentNodes = this.props.data.map(function(comment) {
+                return (
+                        <Comment author={comment.author} key={comment.id}>
+                            {comment.text}
+                        </Comment>
+                );
+            });
+            return (
+                    <div className="commentList">
+                        {commentNodes}
+                    </div>
+            );
+        }
+    });
+
+    var CommentForm = React.createClass({
+        render: function() {
+            return (
+                    <div className="commentForm">
+                        Hello, world! I am a CommentForm.
+                    </div>
+            );
+        }
+    });
+
+    // tutorial7.js
+    var Comment = React.createClass({
+        rawMarkup: function() {
+            var rawMarkup = marked(this.props.children.toString(), {sanitize: true});
+            return { __html: rawMarkup };
+        },
+
+        render: function() {
+            return (
+                    <div className="comment">
+                        <h2 className="commentAuthor">
+                            {this.props.author}
+                        </h2>
+                        <span dangerouslySetInnerHTML={this.rawMarkup()} />
+                    </div>
+            );
+        }
+    });
+
     ReactDOM.render(
-            <CommentBox />,
+            <CommentBox data={data} />,
             document.getElementById('content')
     );
+
 
 </script>
 </body>
