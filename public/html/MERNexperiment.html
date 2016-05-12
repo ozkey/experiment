@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <title>MERN</title>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <!--<script src="/threejs/three.min.js"></script>-->
+
+
+    <!-- hack to share code with server -->
+    <script src="/js/module.js"></script>
+
+    <!-- from server-->
+    <!--<script src="/js/build/app.js"></script>-->
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+</head>
+<body>
+<div id="content"></div>
+<!--<script type="text/babel" src="scripts/example.js"></script>-->
+<script type="text/babel">
+    // tutorial1.js
+    var CommentBox = React.createClass({
+        render: function() {
+            return (
+                    <div className="commentBox">
+                        Hello, world! I am a CommentBox.
+                    </div>
+            );
+        }
+    });
+    ReactDOM.render(
+            <CommentBox />,
+            document.getElementById('content')
+    );
+
+</script>
+</body>
+</html>
