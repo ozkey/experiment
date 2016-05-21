@@ -5,9 +5,11 @@ var gulp = require('gulp'),
     watch = require('gulp-watch'),
     sass = require('gulp-ruby-sass'),
     del = require('del'),
-    browserify = require('gulp-browserify'),
     node;
 
+var babelify = require('babelify');
+var browserify = require('browserify');
+var fs = require("fs");
 
 
 gulp.task('cleanPolymer', function(cb) {
@@ -41,19 +43,36 @@ gulp.task('watch_task', ['build'], function() {
 });
 
 
+gulp.task('reactBabel', ['build'], function() {
+
+
+});
+
+
+
+
+
 // Basic usage
 gulp.task('scripts', function() {
     // Single entry point to browserify
-    gulp.src([
-            'js/src/app.js',
-            // 'js/src/builder.js',
-            // 'js/src/gameClient.js'
-    ])
-        .pipe(browserify({
-            insertGlobals : true,
-            debug : !gulp.env.production
-        }))
-        .pipe(gulp.dest('public/js/build'))
+    // gulp.src([
+    //         'js/src/app.js',
+    //
+    // ])
+    //     .pipe(browserify({
+    //         insertGlobals : true,
+    //         debug : !gulp.env.production
+    //     }))
+    //     .pipe(gulp.dest('public/js/build'))
+    //
+    //
+
+    browserify("js/src/app.js")
+        .transform("babelify", {presets: ["es2015", "react"]})
+        .bundle()
+        .pipe(fs.createWriteStream("public/js/build/bundle_app.js"));
+
+
 });
 
 
